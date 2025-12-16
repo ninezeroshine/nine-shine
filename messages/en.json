@@ -1,0 +1,119 @@
+{
+    "metadata": {
+        "title": "Nine Shine — Creative Design Studio",
+        "description": "We create stunning animation videos, graphic design, and web experiences that captivate audiences and elevate brands."
+    },
+    "navigation": {
+        "services": "Services",
+        "projects": "Projects",
+        "about": "About",
+        "contacts": "Contacts",
+        "letsTalk": "Let's talk"
+    },
+    "hero": {
+        "title": "Design studio focused on digital excellence",
+        "headline": "We craft",
+        "headlineAccent": "digital experiences",
+        "headlineEnd": "that inspire",
+        "description": "Nine Shine is a creative design and technology partner specializing in animation, graphic design, and web development. We craft memorable digital experiences that make brands shine.",
+        "cta": "What we do",
+        "viewWork": "View our work",
+        "getInTouch": "Get in touch"
+    },
+    "services": {
+        "title": "Our Services",
+        "subtitle": "Going beyond what's possible",
+        "animation": {
+            "title": "Animation Videos",
+            "description": "From motion graphics to character animation, we bring stories to life with stunning visuals that captivate and engage."
+        },
+        "graphics": {
+            "title": "Graphic Design",
+            "description": "Brand identity, visual systems, and creative assets that communicate your unique vision with clarity and impact."
+        },
+        "web": {
+            "title": "Web Design",
+            "description": "Immersive websites and digital platforms that combine beautiful aesthetics with seamless user experiences."
+        }
+    },
+    "projects": {
+        "title": "Our Projects",
+        "subtitle": "We help bring ideas to life and create digital products that work.",
+        "viewAll": "View all projects",
+        "featured": "Featured Work",
+        "filters": {
+            "all": "All Projects",
+            "animation": "Animation",
+            "graphics": "Graphics",
+            "web": "Web Design"
+        }
+    },
+    "about": {
+        "title": "About Us",
+        "mission": "Creativity meets technology",
+        "description": "We dare what others don't. Our team combines artistic vision with technical excellence to deliver exceptional results.",
+        "benefits": {
+            "title": "Benefits of working with us",
+            "timezones": {
+                "title": "Time zones ain't no thing",
+                "description": "Wherever you are in the world, you'll feel like we're right around the corner."
+            },
+            "impossible": {
+                "title": "Impossible? We're on it",
+                "description": "\"Impossible\" simply does not exist in our vocabulary. We develop products exactly as designed."
+            },
+            "flexible": {
+                "title": "Flexible work terms",
+                "description": "We adapt to your project needs with transparent pricing and timelines."
+            },
+            "fullService": {
+                "title": "Full spectrum of services",
+                "description": "From concept to delivery, we handle every aspect of your project."
+            }
+        }
+    },
+    "contact": {
+        "title": "Have an idea?",
+        "subtitle": "Tell us about your project",
+        "form": {
+            "name": "Your name",
+            "email": "Your email",
+            "message": "Your message",
+            "submit": "Send message"
+        },
+        "info": {
+            "email": "hello@nineshine.studio",
+            "phone": "+7 999 123 4567"
+        }
+    },
+    "footer": {
+        "rights": "All rights reserved",
+        "privacy": "Privacy Policy",
+        "description": "Creative design and technology partner specializing in animation, graphic design, and web development. We craft memorable digital experiences that make brands shine.",
+        "navigation": "Navigation",
+        "contact": "Contact"
+    },
+    "common": {
+        "readMore": "Read more",
+        "backToHome": "Back to home",
+        "loading": "Loading...",
+        "exploreServices": "Explore all services",
+        "startProject": "Start a project",
+        "whatWeDo": "What we do"
+    },
+    "stats": {
+        "projects": "Projects Completed",
+        "years": "Years Experience",
+        "clients": "Happy Clients",
+        "satisfaction": "Satisfaction Rate"
+    },
+    "marquee": {
+        "animation": "Animation",
+        "branding": "Branding",
+        "webDesign": "Web Design",
+        "motionGraphics": "Motion Graphics",
+        "uiux": "UI/UX",
+        "visualization": "3D Visualization",
+        "creativeDirection": "Creative Direction"
+    }
+}
