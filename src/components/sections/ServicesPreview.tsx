@@ -104,7 +104,7 @@ export function ServicesPreview() {
 interface ServiceCardProps {
     service: {
         key: "animation" | "graphics" | "web";
-        icon: React.ComponentType<{ className?: string }>;
+        icon: React.ComponentType<{ className?: string; style?: React.CSSProperties }>;
         color: string;
     };
     index: number;
