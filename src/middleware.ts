@@ -8,6 +8,7 @@ export const config = {
     // - /api routes
     // - /_next (Next.js internals)
     // - /static (static files)
+    // - /studio (Sanity CMS)
     // - /favicon.ico, /sitemap.xml, /robots.txt (static files)
-    matcher: ['/', '/(en|ru)/:path*', '/((?!api|_next|static|favicon.ico|sitemap.xml|robots.txt).*)']
+    matcher: ['/', '/(en|ru)/:path*', '/((?!api|_next|static|studio|favicon.ico|sitemap.xml|robots.txt).*)']
 };

@@ -23,17 +23,66 @@
     "services": {
         "title": "Our Services",
         "subtitle": "Going beyond what's possible",
+        "pageTitle": "What We Do",
+        "pageSubtitle": "We combine creativity with technology to deliver exceptional results across animation, design, and web development.",
+        "processTitle": "Our Process",
+        "processSubtitle": "How we bring your ideas to life",
+        "process": {
+            "discovery": {
+                "title": "Discovery",
+                "description": "We dive deep into understanding your goals, audience, and vision to create a solid foundation."
+            },
+            "concept": {
+                "title": "Concept",
+                "description": "Our creative team develops unique concepts and directions that align with your brand."
+            },
+            "creation": {
+                "title": "Creation",
+                "description": "We bring concepts to life with meticulous attention to detail and craft."
+            },
+            "delivery": {
+                "title": "Delivery",
+                "description": "Final refinements and delivery of polished, ready-to-use assets."
+            }
+        },
         "animation": {
             "title": "Animation Videos",
-            "description": "From motion graphics to character animation, we bring stories to life with stunning visuals that captivate and engage."
+            "description": "From motion graphics to character animation, we bring stories to life with stunning visuals that captivate and engage.",
+            "longDescription": "We create compelling animated content that tells your story in the most engaging way possible. Our expertise spans explainer videos, brand animations, character animation, and motion graphics.",
+            "features": [
+                "Explainer Videos",
+                "Motion Graphics",
+                "Character Animation",
+                "Logo Animation",
+                "Social Media Content",
+                "Product Showcases"
+            ]
         },
         "graphics": {
             "title": "Graphic Design",
-            "description": "Brand identity, visual systems, and creative assets that communicate your unique vision with clarity and impact."
+            "description": "Brand identity, visual systems, and creative assets that communicate your unique vision with clarity and impact.",
+            "longDescription": "We craft visual identities that resonate with audiences and stand the test of time. From logos to complete brand systems, we ensure every touchpoint reflects your unique story.",
+            "features": [
+                "Brand Identity",
+                "Logo Design",
+                "Visual Systems",
+                "Print Design",
+                "Packaging",
+                "Marketing Materials"
+            ]
         },
         "web": {
             "title": "Web Design",
-            "description": "Immersive websites and digital platforms that combine beautiful aesthetics with seamless user experiences."
+            "description": "Immersive websites and digital platforms that combine beautiful aesthetics with seamless user experiences.",
+            "longDescription": "We design and develop websites that not only look stunning but also perform exceptionally. Every interaction is crafted to delight users and drive results.",
+            "features": [
+                "Website Design",
+                "UI/UX Design",
+                "E-commerce",
+                "Web Applications",
+                "Landing Pages",
+                "Interactive Experiences"
+            ]
         }
     },
     "projects": {
@@ -41,17 +90,167 @@
         "subtitle": "We help bring ideas to life and create digital products that work.",
         "viewAll": "View all projects",
         "featured": "Featured Work",
+        "pageTitle": "Our Work",
+        "pageSubtitle": "Explore our portfolio of creative projects spanning animation, graphic design, and web development.",
+        "viewProject": "View Project",
+        "backToProjects": "Back to Projects",
+        "relatedProjects": "Related Projects",
+        "projectInfo": {
+            "client": "Client",
+            "year": "Year",
+            "category": "Category",
+            "services": "Services"
+        },
         "filters": {
             "all": "All Projects",
             "animation": "Animation",
             "graphics": "Graphics",
             "web": "Web Design"
+        },
+        "items": {
+            "brand-motion": {
+                "slug": "brand-motion",
+                "title": "Brand Motion",
+                "category": "animation",
+                "description": "Dynamic brand animation for a tech startup",
+                "client": "TechVibe Inc.",
+                "year": "2024",
+                "services": [
+                    "Motion Graphics",
+                    "Brand Animation",
+                    "Sound Design"
+                ],
+                "heroImage": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=1920&q=80",
+                "color": "#f97316",
+                "overview": "We created a comprehensive motion identity system for TechVibe, a cutting-edge technology startup. The project involved developing dynamic logo animations, brand transitions, and a complete motion toolkit for their digital presence.",
+                "challenge": "TechVibe needed to stand out in a crowded tech market while maintaining a professional yet approachable brand image. They required a versatile animation system that could work across social media, presentations, and their product interface.",
+                "solution": "We developed a modular animation system with consistent motion principles. Each element was designed to be flexible yet cohesive, allowing the brand to express different moods while maintaining recognition.",
+                "results": "The new motion identity increased brand recognition by 40% and significantly improved engagement across all digital platforms."
+            },
+            "visual-identity": {
+                "slug": "visual-identity",
+                "title": "Visual Identity",
+                "category": "graphics",
+                "description": "Complete brand identity system",
+                "client": "Lumina Studio",
+                "year": "2024",
+                "services": [
+                    "Brand Strategy",
+                    "Logo Design",
+                    "Visual System"
+                ],
+                "heroImage": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1920&q=80",
+                "color": "#8b5cf6",
+                "overview": "A complete visual identity transformation for Lumina Studio, a creative design agency. We crafted a sophisticated brand system that reflects their innovative approach to design.",
+                "challenge": "Lumina needed a brand identity that would position them as industry leaders while showcasing their creative capabilities and attention to detail.",
+                "solution": "We created a minimal yet impactful visual system with a distinctive color palette and custom typography that communicates premium quality and creative excellence.",
+                "results": "The rebrand led to a 60% increase in high-value client inquiries and established Lumina as a recognized name in the design industry."
+            },
+            "ecommerce-platform": {
+                "slug": "ecommerce-platform",
+                "title": "E-commerce Platform",
+                "category": "web",
+                "description": "Modern e-commerce website design",
+                "client": "Artisan Goods Co.",
+                "year": "2024",
+                "services": [
+                    "UX Design",
+                    "UI Design",
+                    "Development"
+                ],
+                "heroImage": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1920&q=80",
+                "color": "#06b6d4",
+                "overview": "A premium e-commerce experience for Artisan Goods, featuring handcrafted products from around the world. The platform combines beautiful aesthetics with seamless shopping functionality.",
+                "challenge": "The client needed an e-commerce platform that could showcase the craftsmanship and story behind each product while providing a frictionless shopping experience.",
+                "solution": "We designed an immersive shopping experience with rich product storytelling, smooth animations, and an intuitive checkout process that celebrates the artisan nature of the products.",
+                "results": "The new platform achieved a 45% increase in conversion rate and 30% higher average order value within the first quarter."
+            },
+            "product-showcase": {
+                "slug": "product-showcase",
+                "title": "Product Showcase",
+                "category": "animation",
+                "description": "3D product animation for marketing",
+                "client": "ElectraTech",
+                "year": "2023",
+                "services": [
+                    "3D Animation",
+                    "Product Visualization",
+                    "Motion Design"
+                ],
+                "heroImage": "https://images.unsplash.com/photo-1635405074683-96d6921a2a68?w=1920&q=80",
+                "color": "#f97316",
+                "overview": "A series of stunning 3D product animations showcasing ElectraTech's latest consumer electronics line, designed to highlight product features and drive marketing campaigns.",
+                "challenge": "ElectraTech needed high-impact visual content that could demonstrate product features in an engaging way for both digital advertising and social media.",
+                "solution": "We created photorealistic 3D animations with dynamic camera movements and lighting that reveal product details in a captivating storytelling format.",
+                "results": "The animations generated over 2 million views across platforms and contributed to a 35% increase in product launch sales."
+            },
+            "corporate-website": {
+                "slug": "corporate-website",
+                "title": "Corporate Website",
+                "category": "web",
+                "description": "Responsive corporate website",
+                "client": "Horizon Ventures",
+                "year": "2023",
+                "services": [
+                    "Web Design",
+                    "Development",
+                    "SEO"
+                ],
+                "heroImage": "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=80",
+                "color": "#06b6d4",
+                "overview": "A sophisticated corporate website for Horizon Ventures, a leading investment firm. The design balances professionalism with modern aesthetics to inspire confidence in potential partners.",
+                "challenge": "Creating a digital presence that conveys trust, expertise, and innovation while making complex investment information accessible and engaging.",
+                "solution": "We designed a clean, professional website with subtle animations and clear information architecture that guides visitors through the firm's story and services.",
+                "results": "The new website increased qualified lead generation by 55% and significantly improved the firm's digital brand perception."
+            },
+            "packaging-design": {
+                "slug": "packaging-design",
+                "title": "Packaging Design",
+                "category": "graphics",
+                "description": "Premium packaging design",
+                "client": "Pure Botanics",
+                "year": "2023",
+                "services": [
+                    "Packaging Design",
+                    "Print Design",
+                    "Brand Extension"
+                ],
+                "heroImage": "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=1920&q=80",
+                "color": "#8b5cf6",
+                "overview": "A complete packaging redesign for Pure Botanics, a luxury skincare brand. The new packaging reflects the brand's commitment to natural ingredients and sustainable practices.",
+                "challenge": "Pure Botanics needed packaging that would stand out on shelves while communicating their eco-friendly values and premium quality.",
+                "solution": "We designed minimalist, elegant packaging using sustainable materials and a refined color palette that emphasizes the natural beauty of the products.",
+                "results": "The new packaging contributed to a 50% increase in retail sales and earned recognition in packaging design awards."
+            }
         }
     },
     "about": {
         "title": "About Us",
         "mission": "Creativity meets technology",
         "description": "We dare what others don't. Our team combines artistic vision with technical excellence to deliver exceptional results.",
+        "pageTitle": "About Nine Shine",
+        "pageSubtitle": "We're a creative studio passionate about crafting digital experiences that inspire, engage, and deliver results.",
+        "storyTitle": "Our Story",
+        "storyContent": "Nine Shine was founded with a simple belief: great design should be accessible to everyone. We started as a small team of passionate creatives and technologists, united by our love for pushing boundaries and creating work that matters. Today, we continue that mission, helping brands of all sizes shine in the digital world.",
+        "valuesTitle": "Our Values",
+        "values": {
+            "excellence": {
+                "title": "Excellence",
+                "description": "We pursue perfection in every pixel, every frame, and every line of code."
+            },
+            "innovation": {
+                "title": "Innovation",
+                "description": "We embrace new ideas and technologies to stay ahead of the curve."
+            },
+            "collaboration": {
+                "title": "Collaboration",
+                "description": "We believe the best work comes from true partnership with our clients."
+            },
+            "integrity": {
+                "title": "Integrity",
+                "description": "We're transparent, honest, and always deliver on our promises."
+            }
+        },
         "benefits": {
             "title": "Benefits of working with us",
             "timezones": {
@@ -75,15 +274,50 @@
     "contact": {
         "title": "Have an idea?",
         "subtitle": "Tell us about your project",
+        "pageTitle": "Get in Touch",
+        "pageSubtitle": "Ready to start your project? We'd love to hear from you. Send us a message and we'll respond as soon as possible.",
+        "formTitle": "Send us a message",
+        "infoTitle": "Contact Information",
         "form": {
             "name": "Your name",
+            "namePlaceholder": "John Doe",
             "email": "Your email",
+            "emailPlaceholder": "john@example.com",
+            "company": "Company (optional)",
+            "companyPlaceholder": "Your company name",
+            "service": "Service interested in",
+            "servicePlaceholder": "Select a service",
+            "serviceOptions": {
+                "animation": "Animation Videos",
+                "graphics": "Graphic Design",
+                "web": "Web Design",
+                "other": "Other"
+            },
             "message": "Your message",
-            "submit": "Send message"
+            "messagePlaceholder": "Tell us about your project...",
+            "submit": "Send message",
+            "sending": "Sending...",
+            "success": "Message sent successfully! We'll get back to you soon.",
+            "error": "Something went wrong. Please try again."
+        },
+        "validation": {
+            "nameRequired": "Name is required",
+            "emailRequired": "Email is required",
+            "emailInvalid": "Please enter a valid email",
+            "messageRequired": "Message is required",
+            "messageMinLength": "Message must be at least 10 characters"
         },
         "info": {
             "email": "hello@nineshine.studio",
-            "phone": "+7 999 123 4567"
+            "phone": "+7 999 123 4567",
+            "address": "Moscow, Russia",
+            "workingHours": "Mon - Fri: 10:00 - 19:00"
+        },
+        "social": {
+            "title": "Follow us",
+            "instagram": "Instagram",
+            "behance": "Behance",
+            "dribbble": "Dribbble"
         }
     },
     "footer": {
