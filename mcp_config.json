@@ -1,0 +1,17 @@
+{
+  "mcpServers": {
+    "Ref": {
+      "serverUrl": "https://api.ref.tools/mcp?apiKey=ref-3c70e1e43c4de43ffd39",
+      "disabledTools": []
+    },
+    "Sanity": {
+      "command": "npx",
+      "args": [
+        "mcp-remote",
+        "https://mcp.sanity.io",
+        "--transport",
+        "http-only"
+      ]
+    }
+  }
+}

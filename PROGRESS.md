@@ -1,5 +1,7 @@
 # Nine Shine — Progress Report
 
+> 🚀 **Live:** [nine-shine.vercel.app](https://nine-shine.vercel.app/)
+
 ## ✅ Completed (Phase 1-2)
 
 ### Project Setup
@@ -11,7 +13,13 @@
 - [x] Custom fonts: **Unbounded** (headings) + **Manrope** (body) — Cyrillic support
 
 ### Pages
+### Pages Created
 - [x] **Home Page** (`/[locale]/page.tsx`) — fully responsive, translated
+- [x] **Services Page** (`/[locale]/services/page.tsx`) — detailed services, process section
+- [x] **Projects Page** (`/[locale]/projects/page.tsx`) — filterable grid, animations
+- [x] **Project Detail** (`/[locale]/projects/[slug]/page.tsx`) — dynamic content, related projects
+- [x] **About Page** (`/[locale]/about/page.tsx`) — studio story, team, awards
+- [x] **Contacts Page** (`/[locale]/contacts/page.tsx`) — contact form, info
 
 ### Components Created
 | Component | Location | Status |
@@ -26,6 +34,9 @@
 | Stats | `components/sections/Stats.tsx` | ✅ Complete |
 | ServicesPreview | `components/sections/ServicesPreview.tsx` | ✅ Complete |
 | CallToAction | `components/sections/CallToAction.tsx` | ✅ Complete |
+| ProjectsGrid | `components/sections/projects/ProjectsGrid.tsx` | ✅ Complete |
+| ProjectDetailHero | `components/sections/project-detail/ProjectDetailHero.tsx` | ✅ Complete |
+| ContactForm | `components/sections/contacts/ContactForm.tsx` | ✅ Complete |
 
 ### Translations
 - [x] `messages/en.json` — English
@@ -34,53 +45,36 @@
 
 ---
 
-## 🚧 To Do (Phase 3-5)
+## ✅ Completed (Phase 3 - Polish & CMS)
 
-### Pages to Create
+### Visual Polish
+- [x] Custom cursor with ring + dot design, hover/click states
+- [x] Page transitions (Framer Motion AnimatePresence)
+- [x] Mobile menu with glassmorphism burger button
+- [x] Smooth scroll (Lenis)
 
-#### 1. Services Page (`/services`)
-- Service cards with detailed descriptions
-- Animation/process showcases
-- Pricing tiers (optional)
-- CTA to contact
+### CMS Integration
+- [x] Sanity CMS setup (`sanity.config.ts`)
+- [x] Project schema with EN/RU localization
+- [x] Content blocks: text, gallery, video, quote, stats, beforeAfter, code
+- [x] GROQ queries for projects
+- [x] Sanity client configuration
 
-#### 2. Projects Page (`/projects`)
-- Filterable project grid (animation, graphics, web)
-- Project cards with hover effects
-- Pagination or infinite scroll
+---
 
-#### 3. Project Detail Page (`/projects/[slug]`)
-- Hero with project image/video
-- Flexible content blocks (text, images, galleries, videos)
-- Project metadata (client, date, category)
-- Related projects
+## 🚧 To Do (Phase 4-5)
 
-#### 4. About Page (`/about`)
-- Studio story/mission
-- Team section (optional)
-- Benefits of working with us
-- Awards/recognition (optional)
-
-#### 5. Contacts Page (`/contacts`)
-- Contact form (React Hook Form + Zod)
-- Contact info (email, phone)
-- Map (optional)
-- Social links
-
-### Additional Components Needed
-- [ ] Custom cursor with magnetic effect
-- [ ] Page transitions (AnimatePresence)
-- [ ] Project card component
-- [ ] Contact form component
+### Additional Components
 - [ ] Image gallery/lightbox
 - [ ] Video player component
 - [ ] Loading states/skeletons
 
-### CMS Integration (Phase 5)
-- [ ] Sanity CMS setup
-- [ ] Project schema
+### CMS Expansion
 - [ ] Service schema
-- [ ] Content fetch utilities
+
+### Engineering
+- [ ] **Refactor**: Replace inline button styles with `GhostButton` component (Hero, Header)
+- [x] Fix button hover contrast issues (white text on white bg)
 
 ---
 
@@ -140,4 +134,7 @@ src/
 messages/
 ├── en.json                 # English translations
 └── ru.json                 # Russian translations
+sanity/
+├── lib/                    # Sanity client & queries
+└── schemas/                # Studio schemas
 ```

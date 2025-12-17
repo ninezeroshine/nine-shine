@@ -2,164 +2,171 @@
 
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
 import Image from "next/image";
+import { Link } from "@/i18n/navigation";
+import { SanityProjectDetail } from "@/types/sanity";
+import { urlFor } from "../../../../sanity/lib/client";
 
 interface ProjectDetailHeroProps {
-    slug: string;
+    project: SanityProjectDetail;
+    locale: "en" | "ru";
 }
 
-export function ProjectDetailHero({ slug }: ProjectDetailHeroProps) {
+export function ProjectDetailHero({ project, locale }: ProjectDetailHeroProps) {
     const t = useTranslations("projects");
 
-    const color = t(`items.${slug}.color`);
-    const heroImage = t(`items.${slug}.heroImage`);
-    const servicesRaw = t.raw(`items.${slug}.services`);
-    const services: string[] = Array.isArray(servicesRaw) ? servicesRaw : [];
+    // Helper to safely get localized string
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const getLocalized = (val: any) => {
+        if (!val) return "";
+        return val[locale] || val['en'] || "";
+    };
+
+    const title = getLocalized(project.title);
+    const description = getLocalized(project.description);
+    const clientName = getLocalized(project.client);
+
+    // Handle services which might be localized array or just array
+    const rawServices = getLocalized(project.services);
+    const servicesList = Array.isArray(rawServices) ? rawServices : [];
+
+    const color = project.color;
+    const imageUrl = project.heroImage ? urlFor(project.heroImage).width(1920).url() : "";
 
     return (
-        <section className="relative pt-24 pb-0 md:pt-32 overflow-hidden">
-            {/* Back Button */}
-            <div className="container-wide mb-8">
-                <motion.div
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5 }}
-                >
-                    <Link
-                        href="/projects"
-                        className="inline-flex items-center gap-2 text-text-secondary hover:text-text-primary transition-colors group"
-                    >
-                        <svg
-                            width="20"
-                            height="20"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            className="group-hover:-translate-x-1 transition-transform"
-                        >
-                            <path d="m15 18-6-6 6-6" />
-                        </svg>
-                        <span>{t("backToProjects")}</span>
-                    </Link>
-                </motion.div>
+        <section className="relative min-h-[90vh] flex items-end pb-20 pt-32 overflow-hidden">
+            {/* Background Image */}
+            <div className="absolute inset-0 z-0">
+                {imageUrl && (
+                    <Image
+                        src={imageUrl}
+                        alt={title}
+                        fill
+                        className="object-cover brightness-[0.3]"
+                        priority
+                    />
+                )}
+                {!imageUrl && (
+                    <div className="absolute inset-0 bg-neutral-900" />
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-bg-primary via-bg-primary/50 to-transparent" />
             </div>
 
-            <div className="container-wide">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-                    {/* Left Column - Info */}
+            {/* Back Button */}
+            <div className="absolute top-32 left-0 right-0 z-20 pointer-events-none">
+                <div className="container-wide">
                     <motion.div
-                        initial={{ opacity: 0, y: 40 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8 }}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.5 }}
+                        className="pointer-events-auto inline-block"
                     >
-                        {/* Category Badge */}
-                        <motion.div
+                        <Link
+                            href="/projects"
+                            className="inline-flex items-center gap-2 text-white/70 hover:text-white transition-colors group px-4 py-2 rounded-full bg-black/20 backdrop-blur-md border border-white/10"
+                        >
+                            <svg
+                                width="20"
+                                height="20"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="group-hover:-translate-x-1 transition-transform"
+                            >
+                                <path d="M19 12H5" />
+                                <path d="m12 19-7-7 7-7" />
+                            </svg>
+                            <span>{t("backToProjects")}</span>
+                        </Link>
+                    </motion.div>
+                </div>
+            </div>
+
+            <div className="container-wide relative z-10">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
+                    {/* Main Content */}
+                    <div className="lg:col-span-8">
+                        {/* Category */}
+                        <motion.span
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6, delay: 0.1 }}
-                            className="inline-block px-4 py-2 rounded-full mb-6"
-                            style={{ backgroundColor: `${color}20`, color }}
+                            transition={{ duration: 0.6 }}
+                            className="inline-block px-4 py-2 rounded-full text-sm font-medium mb-8 border border-white/10 backdrop-blur-sm"
+                            style={{ backgroundColor: `${color}20`, color: color }}
                         >
-                            <span className="text-sm font-medium">
-                                {t(`filters.${t(`items.${slug}.category`)}`)}
-                            </span>
-                        </motion.div>
+                            {t(`filters.${project.category}`)}
+                        </motion.span>
 
                         {/* Title */}
                         <motion.h1
-                            className="heading-xl text-text-primary mb-6"
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8, delay: 0.2 }}
+                            transition={{ duration: 0.6, delay: 0.1 }}
+                            className="heading-xl text-white mb-8"
                         >
-                            {t(`items.${slug}.title`)}
+                            {title}
                         </motion.h1>
 
                         {/* Description */}
                         <motion.p
-                            className="text-lg text-text-secondary mb-10 leading-relaxed"
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8, delay: 0.3 }}
+                            transition={{ duration: 0.6, delay: 0.2 }}
+                            className="text-xl md:text-2xl text-text-secondary max-w-2xl leading-relaxed"
                         >
-                            {t(`items.${slug}.description`)}
+                            {description}
                         </motion.p>
+                    </div>
 
-                        {/* Project Info Grid */}
+                    {/* Meta Info */}
+                    <div className="lg:col-span-4 lg:pb-2">
                         <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8, delay: 0.4 }}
-                            className="grid grid-cols-2 gap-6 p-6 bg-bg-secondary rounded-2xl border border-white/5"
+                            initial={{ opacity: 0, x: 20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.6, delay: 0.3 }}
+                            className="grid grid-cols-2 lg:grid-cols-1 gap-8 lg:gap-12"
                         >
                             {/* Client */}
                             <div>
-                                <p className="text-sm text-text-tertiary mb-1">
-                                    {t("projectInfo.client")}
-                                </p>
-                                <p className="text-text-primary font-medium">
-                                    {t(`items.${slug}.client`)}
+                                <h3 className="text-sm text-text-muted mb-2 uppercase tracking-wider">
+                                    {t("detail.client")}
+                                </h3>
+                                <p className="text-white font-medium text-lg">
+                                    {clientName}
                                 </p>
                             </div>
 
                             {/* Year */}
                             <div>
-                                <p className="text-sm text-text-tertiary mb-1">
-                                    {t("projectInfo.year")}
-                                </p>
-                                <p className="text-text-primary font-medium">
-                                    {t(`items.${slug}.year`)}
+                                <h3 className="text-sm text-text-muted mb-2 uppercase tracking-wider">
+                                    {t("detail.year")}
+                                </h3>
+                                <p className="text-white font-medium text-lg">
+                                    {project.year}
                                 </p>
                             </div>
 
                             {/* Services */}
-                            <div className="col-span-2">
-                                <p className="text-sm text-text-tertiary mb-2">
-                                    {t("projectInfo.services")}
-                                </p>
-                                <div className="flex flex-wrap gap-2">
-                                    {services.map((service, i) => (
-                                        <span
-                                            key={i}
-                                            className="px-3 py-1 text-sm rounded-full bg-white/5 text-text-secondary"
-                                        >
+                            <div className="col-span-2 lg:col-span-1">
+                                <h3 className="text-sm text-text-muted mb-2 uppercase tracking-wider">
+                                    {t("detail.services")}
+                                </h3>
+                                <ul className="flex flex-wrap gap-x-4 gap-y-2">
+                                    {servicesList.map((service: string, index: number) => (
+                                        <li key={index} className="text-white font-medium text-lg">
                                             {service}
-                                        </span>
+                                            {index < servicesList.length - 1 && (
+                                                <span className="text-text-muted ml-4 opacity-30">/</span>
+                                            )}
+                                        </li>
                                     ))}
-                                </div>
+                                </ul>
                             </div>
                         </motion.div>
-                    </motion.div>
-
-                    {/* Right Column - Hero Image */}
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.8, delay: 0.3 }}
-                        className="relative"
-                    >
-                        <div className="relative aspect-[4/3] rounded-3xl overflow-hidden">
-                            <Image
-                                src={heroImage}
-                                alt={t(`items.${slug}.title`)}
-                                fill
-                                className="object-cover"
-                                sizes="(max-width: 768px) 100vw, 50vw"
-                                priority
-                            />
-                            {/* Gradient Overlay */}
-                            <div
-                                className="absolute inset-0 opacity-30"
-                                style={{
-                                    background: `linear-gradient(to top, ${color}40, transparent)`,
-                                }}
-                            />
-                        </div>
-                    </motion.div>
+                    </div>
                 </div>
             </div>
         </section>

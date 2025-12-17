@@ -5,21 +5,21 @@ import { projectBlocks } from "@/data/project-blocks";
 
 interface ProjectContentProps {
     slug: string;
+    blocks?: any[]; // Sanity blocks passed from parent
 }
 
-export function ProjectContent({ slug }: ProjectContentProps) {
-    // Get blocks for this project
-    const blocks = projectBlocks[slug] || [];
+export function ProjectContent({ slug, blocks }: ProjectContentProps) {
+    // Fallback to local blocks content is not yet fully migrated to Sanity blocks structure
+    // We prioritize local content for the rich blocks for now
+    const content = projectBlocks[slug] || [];
 
-    // Get color from first text block or default
-    const color = blocks.length > 0
-        ? getProjectColor(slug)
-        : "#8b5cf6";
+    // Get color from helper
+    const color = getProjectColor(slug);
 
     return (
         <section className="py-20 md:py-28">
             <div className="container-wide max-w-4xl mx-auto">
-                <BlockRenderer blocks={blocks} color={color} />
+                <BlockRenderer blocks={content} color={color} />
             </div>
         </section>
     );

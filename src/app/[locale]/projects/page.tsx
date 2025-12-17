@@ -5,6 +5,9 @@ import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvide
 import { ProjectsHero } from "@/components/sections/projects/ProjectsHero";
 import { ProjectsGrid } from "@/components/sections/projects/ProjectsGrid";
 import { CallToAction } from "@/components/sections/CallToAction";
+import { client } from "../../../../sanity/lib/client";
+import { allProjectsQuery } from "../../../../sanity/lib/queries";
+import { SanityProject } from "@/types/sanity";
 
 interface ProjectsPageProps {
     params: Promise<{ locale: string }>;
@@ -14,15 +17,13 @@ export default async function ProjectsPage({ params }: ProjectsPageProps) {
     const { locale } = await params;
     setRequestLocale(locale);
 
+    const projects = await client.fetch<SanityProject[]>(allProjectsQuery);
+
     return (
-        <SmoothScrollProvider>
-            <Header />
-            <main>
-                <ProjectsHero />
-                <ProjectsGrid />
-                <CallToAction />
-            </main>
-            <Footer />
-        </SmoothScrollProvider>
+        <>
+            <ProjectsHero />
+            <ProjectsGrid projects={projects} locale={locale as "en" | "ru"} />
+            <CallToAction />
+        </>
     );
 }

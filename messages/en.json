@@ -95,6 +95,12 @@
         "viewProject": "View Project",
         "backToProjects": "Back to Projects",
         "relatedProjects": "Related Projects",
+        "detail": {
+            "backToProjects": "Back to Projects",
+            "client": "Client",
+            "year": "Year",
+            "services": "Services"
+        },
         "projectInfo": {
             "client": "Client",
             "year": "Year",

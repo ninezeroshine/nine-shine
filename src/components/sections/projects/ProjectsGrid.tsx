@@ -4,27 +4,23 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import { SanityProject } from "@/types/sanity";
 
-const projectKeys = ["brand-motion", "visual-identity", "ecommerce-platform", "product-showcase", "corporate-website", "packaging-design"] as const;
-const projectColors: Record<string, string> = {
-    "brand-motion": "#f97316",
-    "visual-identity": "#8b5cf6",
-    "ecommerce-platform": "#06b6d4",
-    "product-showcase": "#f97316",
-    "corporate-website": "#06b6d4",
-    "packaging-design": "#8b5cf6",
-};
 const filterKeys = ["all", "animation", "graphics", "web"] as const;
 
-export function ProjectsGrid() {
+interface ProjectsGridProps {
+    projects: SanityProject[];
+    locale: "en" | "ru";
+}
+
+export function ProjectsGrid({ projects, locale }: ProjectsGridProps) {
     const t = useTranslations("projects");
     const [activeFilter, setActiveFilter] = useState<string>("all");
 
     // Filter projects
-    const filteredProjects = projectKeys.filter((key) => {
+    const filteredProjects = projects.filter((project) => {
         if (activeFilter === "all") return true;
-        const category = t(`items.${key}.category`);
-        return category === activeFilter;
+        return project.category === activeFilter;
     });
 
     return (
@@ -43,8 +39,8 @@ export function ProjectsGrid() {
                             key={filter}
                             onClick={() => setActiveFilter(filter)}
                             className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${activeFilter === filter
-                                    ? "bg-accent text-white"
-                                    : "bg-white/5 text-text-secondary hover:bg-white/10 hover:text-text-primary"
+                                ? "bg-accent text-white"
+                                : "bg-white/5 text-text-secondary hover:bg-white/10 hover:text-text-primary"
                                 }`}
                         >
                             {t(`filters.${filter}`)}
@@ -58,12 +54,12 @@ export function ProjectsGrid() {
                     className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
                 >
                     <AnimatePresence mode="popLayout">
-                        {filteredProjects.map((key, index) => (
+                        {filteredProjects.map((project, index) => (
                             <ProjectCard
-                                key={key}
-                                projectKey={key}
-                                color={projectColors[key]}
+                                key={project._id}
+                                project={project}
                                 index={index}
+                                locale={locale}
                             />
                         ))}
                     </AnimatePresence>
@@ -74,13 +70,24 @@ export function ProjectsGrid() {
 }
 
 interface ProjectCardProps {
-    projectKey: string;
-    color: string;
+    project: SanityProject;
     index: number;
+    locale: "en" | "ru";
 }
 
-function ProjectCard({ projectKey, color, index }: ProjectCardProps) {
+function ProjectCard({ project, index, locale }: ProjectCardProps) {
     const t = useTranslations("projects");
+
+    // Helper to safely get localized string
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const getLocalized = (val: any) => {
+        if (!val) return "";
+        return val[locale] || val['en'] || "";
+    };
+
+    const title = getLocalized(project.title);
+    const description = getLocalized(project.description);
+    const color = project.color;
 
     return (
         <motion.div
@@ -91,7 +98,7 @@ function ProjectCard({ projectKey, color, index }: ProjectCardProps) {
             transition={{ duration: 0.4, delay: index * 0.05 }}
             className="group"
         >
-            <Link href={`/projects/${projectKey}`}>
+            <Link href={`/projects/${project.slug.current}`}>
                 <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-bg-card border border-white/5 hover:border-white/10 transition-all duration-500 cursor-pointer">
                     {/* Background Gradient */}
                     <div
@@ -109,17 +116,17 @@ function ProjectCard({ projectKey, color, index }: ProjectCardProps) {
                                 className="inline-block px-3 py-1 rounded-full text-xs font-medium"
                                 style={{ backgroundColor: `${color}30`, color }}
                             >
-                                {t(`filters.${t(`items.${projectKey}.category`)}`)}
+                                {t(`filters.${project.category}`)}
                             </span>
                         </div>
 
                         {/* Info */}
                         <div>
                             <h3 className="heading-sm text-text-primary mb-2 group-hover:text-white transition-colors">
-                                {t(`items.${projectKey}.title`)}
+                                {title}
                             </h3>
                             <p className="text-text-secondary text-sm line-clamp-2">
-                                {t(`items.${projectKey}.description`)}
+                                {description}
                             </p>
 
                             {/* View Project Link */}
@@ -157,3 +164,4 @@ function ProjectCard({ projectKey, color, index }: ProjectCardProps) {
         </motion.div>
     );
 }
+

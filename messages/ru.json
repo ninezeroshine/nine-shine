@@ -95,6 +95,12 @@
         "viewProject": "Смотреть проект",
         "backToProjects": "Назад к проектам",
         "relatedProjects": "Похожие проекты",
+        "detail": {
+            "backToProjects": "Назад к проектам",
+            "client": "Клиент",
+            "year": "Год",
+            "services": "Услуги"
+        },
         "projectInfo": {
             "client": "Клиент",
             "year": "Год",

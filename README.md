@@ -29,6 +29,7 @@ Premium portfolio website for **Nine Shine** — a creative design and technolog
 | i18n | next-intl |
 | Forms | React Hook Form + Zod |
 | Fonts | Google Fonts (Unbounded, Manrope) |
+| CMS | Sanity |
 
 ## 🚀 Getting Started
 
@@ -45,6 +46,11 @@ cd nine-shine
 
 # Install dependencies
 npm install
+
+# Setup Environment Variables
+# Create .env.local with:
+# NEXT_PUBLIC_SANITY_PROJECT_ID=your_project_id
+# NEXT_PUBLIC_SANITY_DATASET=production
 
 # Start development server
 npm run dev
@@ -65,6 +71,9 @@ npm start
 nine_shine/
 ├── messages/           # Translation files (en.json, ru.json)
 ├── public/             # Static assets
+├── sanity/             # Sanity CMS config & schemas
+│   ├── lib/            # Client & queries
+│   └── schemas/        # Content types
 ├── src/
 │   ├── app/
 │   │   ├── [locale]/   # Locale-based routing
@@ -76,7 +85,8 @@ nine_shine/
 │   ├── i18n/           # Internationalization config
 │   └── middleware.ts   # Locale detection
 ├── tailwind.config.ts
-└── next.config.ts
+├── next.config.ts
+└── sanity.config.ts
 ```
 
 ## 🎨 Design System
@@ -126,12 +136,12 @@ function MyComponent() {
 ## 🗺 Roadmap
 
 - [x] Home page with hero, projects, services, stats
-- [ ] Services page (detailed service descriptions)
-- [ ] Projects page (filterable grid)
-- [ ] Project detail pages
-- [ ] About page
-- [ ] Contacts page with form
-- [ ] Sanity CMS integration
+- [x] Services page (detailed service descriptions)
+- [x] Projects page (filterable grid)
+- [x] Project detail pages
+- [x] About page
+- [x] Contacts page with form
+- [x] Sanity CMS integration (Setup & Project Schema)
 - [ ] Custom cursor effects
 - [ ] Page transitions
 

@@ -46,7 +46,7 @@ export function AboutHero() {
                         transition={{ duration: 0.6, delay: 0.1 }}
                         className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8"
                     >
-                        <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+                        <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
                         <span className="text-sm text-text-secondary">{t("title")}</span>
                     </motion.div>
 

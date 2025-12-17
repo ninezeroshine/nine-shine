@@ -1,7 +1,4 @@
 import { setRequestLocale } from "next-intl/server";
-import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
-import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
 import { AboutHero } from "@/components/sections/about/AboutHero";
 import { StorySection } from "@/components/sections/about/StorySection";
 import { ValuesSection } from "@/components/sections/about/ValuesSection";
@@ -17,16 +14,12 @@ export default async function AboutPage({ params }: AboutPageProps) {
     setRequestLocale(locale);
 
     return (
-        <SmoothScrollProvider>
-            <Header />
-            <main>
-                <AboutHero />
-                <StorySection />
-                <ValuesSection />
-                <BenefitsSection />
-                <CallToAction />
-            </main>
-            <Footer />
-        </SmoothScrollProvider>
+        <>
+            <AboutHero />
+            <StorySection />
+            <ValuesSection />
+            <BenefitsSection />
+            <CallToAction />
+        </>
     );
 }

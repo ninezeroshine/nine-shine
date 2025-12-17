@@ -4,45 +4,19 @@ import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import Image from "next/image";
+import { SanityProject } from "@/types/sanity";
+import { urlFor } from "../../../sanity/lib/client";
 
-// Placeholder projects until CMS is connected
-const placeholderProjects = [
-    {
-        id: "1",
-        slug: "neural-brand",
-        title: "Neural Brand Identity",
-        category: "graphics",
-        image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&q=80",
-        color: "#8b5cf6",
-    },
-    {
-        id: "2",
-        slug: "motion-reel",
-        title: "Motion Design Reel",
-        category: "animation",
-        image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&q=80",
-        color: "#f97316",
-    },
-    {
-        id: "3",
-        slug: "digital-experience",
-        title: "Digital Experience Platform",
-        category: "web",
-        image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
-        color: "#06b6d4",
-    },
-    {
-        id: "4",
-        slug: "abstract-visuals",
-        title: "Abstract Visual System",
-        category: "graphics",
-        image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&q=80",
-        color: "#22c55e",
-    },
-];
+interface FeaturedProjectsProps {
+    projects: SanityProject[];
+    locale: "en" | "ru";
+}
 
-export function FeaturedProjects() {
+export function FeaturedProjects({ projects, locale }: FeaturedProjectsProps) {
     const t = useTranslations("projects");
+
+    // Take top 4 projects
+    const featuredProjects = projects.slice(0, 4);
 
     return (
         <section className="py-24 md:py-32 relative overflow-hidden">
@@ -95,12 +69,13 @@ export function FeaturedProjects() {
 
                 {/* Projects Grid - Bento Style */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {placeholderProjects.map((project, index) => (
+                    {featuredProjects.map((project, index) => (
                         <ProjectCard
-                            key={project.id}
+                            key={project._id}
                             project={project}
                             index={index}
                             isLarge={index === 0}
+                            locale={locale}
                         />
                     ))}
                 </div>
@@ -110,20 +85,27 @@ export function FeaturedProjects() {
 }
 
 interface ProjectCardProps {
-    project: {
-        id: string;
-        slug: string;
-        title: string;
-        category: string;
-        image: string;
-        color: string;
-    };
+    project: SanityProject;
     index: number;
     isLarge?: boolean;
+    locale: "en" | "ru";
 }
 
-function ProjectCard({ project, index, isLarge }: ProjectCardProps) {
+function ProjectCard({ project, index, isLarge, locale }: ProjectCardProps) {
     const t = useTranslations("projects.filters");
+
+    // Helper to safely get localized string
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const getLocalized = (val: any) => {
+        if (!val) return "";
+        return val[locale] || val['en'] || "";
+    };
+
+    const title = getLocalized(project.title);
+    const category = project.category; // string
+    // Since images are not yet uploaded, we might need a fallback or conditional render
+    // But for now, let's try to generate the url if heroImage exists
+    const imageUrl = project.heroImage ? urlFor(project.heroImage).width(800).url() : "";
 
     return (
         <motion.div
@@ -134,18 +116,26 @@ function ProjectCard({ project, index, isLarge }: ProjectCardProps) {
             className={isLarge ? "md:row-span-2" : ""}
         >
             <Link
-                href={`/projects/${project.slug}`}
+                href={`/projects/${project.slug.current}`}
                 className={`group block relative overflow-hidden rounded-2xl lg:rounded-3xl bg-bg-card border border-white/5 ${isLarge ? "aspect-[3/4] md:aspect-auto md:h-full" : "aspect-[4/3]"
                     }`}
             >
                 {/* Image */}
-                <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover transition-all duration-700 group-hover:scale-105 group-hover:brightness-110"
-                />
+                {imageUrl && (
+                    <Image
+                        src={imageUrl}
+                        alt={title}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        className="object-cover transition-all duration-700 group-hover:scale-105 group-hover:brightness-110"
+                    />
+                )}
+                {!imageUrl && (
+                    <div className="absolute inset-0 bg-neutral-900 flex items-center justify-center text-text-secondary">
+                        <span className="text-sm">No Image</span>
+                    </div>
+                )}
+
 
                 {/* Gradient Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-bg-primary via-bg-primary/60 to-transparent opacity-80" />
@@ -162,12 +152,12 @@ function ProjectCard({ project, index, isLarge }: ProjectCardProps) {
                     <motion.span
                         className="inline-block self-start px-3 py-1.5 bg-white/10 backdrop-blur-sm text-text-primary text-xs font-medium rounded-full mb-4 border border-white/10"
                     >
-                        {t(project.category as "animation" | "graphics" | "web")}
+                        {t(category)}
                     </motion.span>
 
                     {/* Title */}
                     <h3 className="text-text-primary text-xl md:text-2xl lg:text-3xl font-heading font-medium group-hover:translate-y-0 transition-transform duration-500">
-                        {project.title}
+                        {title}
                     </h3>
 
                     {/* Arrow Icon */}
@@ -194,3 +184,4 @@ function ProjectCard({ project, index, isLarge }: ProjectCardProps) {
         </motion.div>
     );
 }
+

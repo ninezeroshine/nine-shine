@@ -64,7 +64,7 @@ export function Hero() {
                         transition={{ duration: 0.6, delay: 0.2 }}
                         className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8"
                     >
-                        <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+                        <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
                         <span className="text-sm text-text-secondary">{t("title")}</span>
                     </motion.div>
 
@@ -99,9 +99,9 @@ export function Hero() {
                     >
                         <Link
                             href="/projects"
-                            className="group inline-flex items-center gap-3 px-8 py-4 bg-text-primary text-bg-primary font-medium rounded-full hover:bg-white/90 transition-all duration-300"
+                            className="group inline-flex items-center gap-3 px-8 py-4 bg-white/5 border border-white/10 text-white font-medium rounded-full hover:bg-white hover:text-black transition-all duration-300"
                         >
-                            <span>{t("viewWork")}</span>
+                            <span className="group-hover:text-black">{t("viewWork")}</span>
                             <motion.svg
                                 width="20"
                                 height="20"
@@ -111,7 +111,7 @@ export function Hero() {
                                 strokeWidth="2"
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
-                                className="group-hover:translate-x-1 transition-transform duration-300"
+                                className="group-hover:translate-x-1 group-hover:text-black transition-all duration-300"
                             >
                                 <path d="M5 12h14" />
                                 <path d="m12 5 7 7-7 7" />

@@ -16,15 +16,11 @@ export default async function ServicesPage({ params }: ServicesPageProps) {
     setRequestLocale(locale);
 
     return (
-        <SmoothScrollProvider>
-            <Header />
-            <main>
-                <ServicesHero />
-                <ServicesList />
-                <ProcessSection />
-                <CallToAction />
-            </main>
-            <Footer />
-        </SmoothScrollProvider>
+        <>
+            <ServicesHero />
+            <ServicesList />
+            <ProcessSection />
+            <CallToAction />
+        </>
     );
 }

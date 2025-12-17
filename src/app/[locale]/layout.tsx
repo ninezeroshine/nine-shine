@@ -6,7 +6,13 @@ import { getMessages, setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import "../globals.css";
 
-// Primary font for headings - Modern geometric with Cyrillic support
+import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
+import { Cursor } from "@/components/ui/Cursor";
+import { PageTransition } from "@/components/layout/PageTransition";
+import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
+
+// Primary font for headings
 const unbounded = Unbounded({
     subsets: ["latin", "cyrillic"],
     variable: "--font-heading",
@@ -14,7 +20,7 @@ const unbounded = Unbounded({
     weight: ["400", "500", "600", "700"],
 });
 
-// Body font - Clean and readable with Cyrillic support
+// Body font
 const manrope = Manrope({
     subsets: ["latin", "cyrillic"],
     variable: "--font-body",
@@ -82,19 +88,25 @@ export default async function LocaleLayout({
         notFound();
     }
 
-    // Enable static rendering
     setRequestLocale(locale);
-
-    // Get messages for client components
     const messages = await getMessages();
 
     return (
         <html lang={locale} suppressHydrationWarning>
             <body
-                className={`${unbounded.variable} ${manrope.variable} font-body antialiased`}
+                className={`${unbounded.variable} ${manrope.variable} font-body antialiased bg-bg-primary text-text-primary selection:bg-accent selection:text-white`}
             >
                 <NextIntlClientProvider messages={messages}>
-                    {children}
+                    <SmoothScrollProvider>
+                        <Cursor />
+                        <Header />
+                        <main className="min-h-screen pt-24 flex flex-col">
+                            <PageTransition>
+                                {children}
+                            </PageTransition>
+                        </main>
+                        <Footer />
+                    </SmoothScrollProvider>
                 </NextIntlClientProvider>
             </body>
         </html>

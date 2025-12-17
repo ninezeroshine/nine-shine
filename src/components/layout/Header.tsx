@@ -28,6 +28,18 @@ export function Header() {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
+    // Lock body scroll when mobile menu is open
+    useEffect(() => {
+        if (isMobileMenuOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "unset";
+        }
+        return () => {
+            document.body.style.overflow = "unset";
+        };
+    }, [isMobileMenuOpen]);
+
     return (
         <header
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
@@ -94,44 +106,46 @@ export function Header() {
                     <LanguageSwitcher />
                     <Link
                         href="/contacts"
-                        className="px-5 py-2.5 bg-text-primary text-bg-primary text-sm font-medium rounded-full hover:bg-white/90 transition-all duration-300"
+                        className="group px-5 py-2.5 bg-white/5 border border-white/10 text-white text-sm font-medium rounded-full hover:bg-white transition-all duration-300"
                     >
-                        {t("letsTalk")}
+                        <span className="group-hover:text-black">{t("letsTalk")}</span>
                     </Link>
                 </motion.div>
 
                 {/* Mobile Menu Button */}
-                <button
+                <motion.button
                     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                    className="md:hidden relative z-10 p-2"
+                    className="md:hidden relative z-[60] w-11 h-11 flex items-center justify-center bg-white/10 backdrop-blur-md rounded-xl border border-white/10 hover:bg-white/15 transition-colors"
                     aria-label="Toggle menu"
+                    whileTap={{ scale: 0.95 }}
                 >
                     <div className="w-6 h-5 flex flex-col justify-between">
                         <motion.span
-                            className="w-full h-0.5 bg-text-primary rounded-full origin-left"
+                            className="block w-full h-[3px] bg-white rounded-full origin-center"
                             animate={{
                                 rotate: isMobileMenuOpen ? 45 : 0,
-                                width: isMobileMenuOpen ? "100%" : "100%",
+                                y: isMobileMenuOpen ? 9 : 0,
                             }}
-                            transition={{ duration: 0.3 }}
+                            transition={{ duration: 0.3, ease: "easeInOut" }}
                         />
                         <motion.span
-                            className="w-full h-0.5 bg-text-primary rounded-full"
+                            className="block w-full h-[3px] bg-white rounded-full"
                             animate={{
                                 opacity: isMobileMenuOpen ? 0 : 1,
-                                x: isMobileMenuOpen ? 20 : 0,
+                                scaleX: isMobileMenuOpen ? 0 : 1,
                             }}
                             transition={{ duration: 0.2 }}
                         />
                         <motion.span
-                            className="w-full h-0.5 bg-text-primary rounded-full origin-left"
+                            className="block w-full h-[3px] bg-white rounded-full origin-center"
                             animate={{
                                 rotate: isMobileMenuOpen ? -45 : 0,
+                                y: isMobileMenuOpen ? -9 : 0,
                             }}
-                            transition={{ duration: 0.3 }}
+                            transition={{ duration: 0.3, ease: "easeInOut" }}
                         />
                     </div>
-                </button>
+                </motion.button>
 
                 {/* Mobile Menu */}
                 <AnimatePresence>
@@ -141,10 +155,10 @@ export function Header() {
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
                             transition={{ duration: 0.3 }}
-                            className="fixed inset-0 bg-bg-primary/95 backdrop-blur-xl md:hidden z-40"
+                            className="fixed inset-0 bg-bg-primary/98 backdrop-blur-xl md:hidden z-50 flex flex-col pt-24"
                         >
                             <div className="container-wide h-full flex flex-col justify-center">
-                                <ul className="space-y-6">
+                                <ul className="space-y-8">
                                     {navItems.map((item, index) => (
                                         <motion.li
                                             key={item.key}
@@ -154,9 +168,9 @@ export function Header() {
                                         >
                                             <Link
                                                 href={item.href}
-                                                className={`block text-4xl font-heading font-medium ${pathname === item.href
-                                                    ? "text-text-primary"
-                                                    : "text-text-secondary hover:text-text-primary"
+                                                className={`block text-7xl sm:text-8xl font-heading font-semibold ${pathname === item.href
+                                                    ? "text-white"
+                                                    : "text-white/60 hover:text-white"
                                                     } transition-colors`}
                                                 onClick={() => setIsMobileMenuOpen(false)}
                                             >
@@ -166,9 +180,9 @@ export function Header() {
                                     ))}
                                 </ul>
                                 <motion.div
-                                    className="mt-12"
-                                    initial={{ opacity: 0 }}
-                                    animate={{ opacity: 1 }}
+                                    className="mt-16 flex"
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: 0.5 }}
                                 >
                                     <LanguageSwitcher />
