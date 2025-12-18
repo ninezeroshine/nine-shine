@@ -49,6 +49,7 @@
 
 ### Visual Polish
 - [x] Custom cursor with ring + dot design, hover/click states
+- [x] **Interactive Spotlight Grid** background (Magnetic effect)
 - [x] Page transitions (Framer Motion AnimatePresence)
 - [x] Mobile menu with glassmorphism burger button
 - [x] Smooth scroll (Lenis)

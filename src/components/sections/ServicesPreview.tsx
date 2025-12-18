@@ -27,18 +27,7 @@ export function ServicesPreview() {
     const tCommon = useTranslations("common");
 
     return (
-        <section className="py-24 md:py-32 relative overflow-hidden bg-bg-secondary">
-            {/* Background pattern */}
-            <div className="absolute inset-0 opacity-30">
-                <div
-                    className="absolute inset-0"
-                    style={{
-                        backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0)`,
-                        backgroundSize: '40px 40px',
-                    }}
-                />
-            </div>
-
+        <section className="py-24 md:py-32 relative overflow-hidden bg-bg-secondary/50">
             <div className="container-wide relative z-10">
                 {/* Section Header */}
                 <motion.div

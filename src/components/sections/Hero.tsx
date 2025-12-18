@@ -9,48 +9,7 @@ export function Hero() {
 
     return (
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-            {/* Background Effects */}
-            <div className="absolute inset-0">
-                {/* Grid Pattern */}
-                <div
-                    className="absolute inset-0 opacity-20"
-                    style={{
-                        backgroundImage: `
-              linear-gradient(rgba(139, 92, 246, 0.03) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(139, 92, 246, 0.03) 1px, transparent 1px)
-            `,
-                        backgroundSize: '60px 60px',
-                    }}
-                />
-
-                {/* Gradient Orbs */}
-                <motion.div
-                    className="absolute top-1/4 left-1/4 w-[600px] h-[600px] rounded-full bg-accent/20 blur-[120px]"
-                    animate={{
-                        x: [0, 50, 0],
-                        y: [0, -30, 0],
-                    }}
-                    transition={{
-                        duration: 20,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                    }}
-                />
-                <motion.div
-                    className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-warm/15 blur-[100px]"
-                    animate={{
-                        x: [0, -40, 0],
-                        y: [0, 40, 0],
-                    }}
-                    transition={{
-                        duration: 15,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                    }}
-                />
-            </div>
-
-            <div className="container-wide relative z-10 pt-32 pb-20">
+            <div className="container-wide relative z-10 pt-0 pb-20">
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}

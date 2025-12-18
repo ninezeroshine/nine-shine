@@ -1,0 +1,14 @@
+{
+  "version": "1.0.0",
+  "projectName": "nine_shine",
+  "createdAt": "2025-12-18T11:20:12.315Z",
+  "streaming": {
+    "enabled": true,
+    "format": "jsonl",
+    "cursorIntegration": true
+  },
+  "ui": {
+    "autoShowMoat": true,
+    "confirmBeforeSend": false
+  }
+}

@@ -8,6 +8,7 @@ import "../globals.css";
 
 import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
 import { Cursor } from "@/components/ui/Cursor";
+import { InteractiveGrid } from "@/components/ui/InteractiveGrid";
 import { PageTransition } from "@/components/layout/PageTransition";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -98,6 +99,7 @@ export default async function LocaleLayout({
             >
                 <NextIntlClientProvider messages={messages}>
                     <SmoothScrollProvider>
+                        <InteractiveGrid />
                         <Cursor />
                         <Header />
                         <main className="min-h-screen pt-24 flex flex-col">

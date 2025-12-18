@@ -1,0 +1,17 @@
+[
+  {
+    "id": "073f8029-292f-4200-9016-ad7c8bc1db67",
+    "title": "Container",
+    "comment": "подними эту секцию повыше",
+    "selector": "div > section.relative.min-h-screen:nth-child(1) > div.container-wide.relative",
+    "boundingRect": {
+      "x": 576,
+      "y": 251,
+      "w": 1400,
+      "h": 996
+    },
+    "screenshotPath": "./screenshots/moat-1766056877302-n9rhlsvlt.png",
+    "status": "done",
+    "timestamp": 1766056877399
+  }
+]
